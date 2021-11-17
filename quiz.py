@@ -24,6 +24,7 @@ pergunta_10= ("Uma das maiores tragédias ocorridas no Brasil foi o rompimento d
  "O solo foi também responsável pela desestruturação química do solo." 
  "A secagem do composto é extremamente lenta, com esse tempo de espera impossibilitando a construção de novas estruturas nos locais afetados", 
  "Além do impacto, o rejteito tem propriedades que desapropriam o solo para cultivo, plantação e sobrevivência da flora da região.")
+
 perguntas = [pergunta_1, pergunta_2, pergunta_3, pergunta_4, pergunta_5, pergunta_6, pergunta_7, pergunta_8, pergunta_9 , pergunta_10]
 pontuacao_max = 0
 for i in perguntas:
@@ -34,7 +35,7 @@ def linha():
     print("_"*40)
 
 def inicio():
-    print('Quiz ...\nQuiz feito por ... ... ... ...')
+    print('Quiz sobre o Meio Ambiente')
     linha()
     continuar = input("\nDeseja iniciar o Quiz? [S/N]: ")
     linha()
