@@ -39,7 +39,7 @@ def inicio():
     linha()
     continuar = input("\nDeseja iniciar o Quiz? [S/N]: ")
     linha()
-    if continuar == 'S' or continuar == 's':
+    if continuar == 's' or continuar == "S":
         status = True
     else:
         status = False
@@ -94,6 +94,17 @@ def tentar_novamente():
         continuar = False
     return continuar
 
+def desempenho(pontuacao_final):
+    if pontuacao_final <= 10:
+        print('Seu desempenho foi regular.')
+    elif pontuacao_final >= 11 and pontuacao_final <= 15:
+        print('Seu desempenho foi bom.')
+    elif pontuacao_final >= 16 and pontuacao_final <= 20:
+        print('Seu desempenho foi ótimo!')
+    elif pontuacao_final == 21:
+        print('Seu desempenho foi perfeito!')
+
+
 #inicio
 continuar = inicio()
 
@@ -117,5 +128,7 @@ while continuar == True:
     print(*erros, sep = ", ")
     time.sleep(1)
     print("\nSua pontuação final foi: %d/%d" %(pontuacao_final,pontuacao_max))
+    desempenho(pontuacao_final)
 
+    linha()
     continuar = tentar_novamente()
