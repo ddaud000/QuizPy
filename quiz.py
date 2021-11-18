@@ -1,8 +1,8 @@
 import time
 import random
-#variaveis Leia as afirmações a seguir e assinale a resposta errada:", "a)A Floresta Amazônica atua como pulmão do mundo, sendo responsável pela produção de grande parte do oxigênio do mundo.","b)O desmatamento da Floresta Amazônia pode levar à desertificação de áreas localizadas ao sudeste do Brasil.", "c)O Rio Amazonas é o segundo maior rio do mundo, perdendo somente para o Rio Nilo.", "d)A Floresta Amazônica se estende por oito países da América do Sul.", "e)","A",2, "A", ") ","O",", e","P")
+#variaveis
 continuar = False
-#                                                                                                                                                                                                         6    7     8       9        10      11     12
+
 
 pergunta_1 = ("Quais das alternativas a baixo refere-se as mudanças climáticas?", 
               "a) Aquecimento global", 
