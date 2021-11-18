@@ -1,9 +1,7 @@
 import time
 import random
-#variaveis
-continuar = False
 
-
+#dados perguntas
 pergunta_1 = ("Quais das alternativas a baixo refere-se as mudanças climáticas?", 
               "a) Aquecimento global", 
               "b) Aumento da temperatura", 
@@ -134,28 +132,49 @@ pergunta_10= ("Uma das maiores tragédias ocorridas no Brasil foi o rompimento d
               "A secagem do composto é extremamente lenta, com esse tempo de espera impossibilitando a construção de novas estruturas nos locais afetados", 
               "Além do impacto, o rejeito tem propriedades que desapropriam o solo para cultivo, plantação e sobrevivência da flora da região.")
 
-
+#variaveis
+continuar = False
 perguntas = [pergunta_1, pergunta_2, pergunta_3, pergunta_4, pergunta_5, pergunta_6, pergunta_7, pergunta_8, pergunta_9 , pergunta_10]
 pontuacao_max = 0
 for i in perguntas:
     pontuacao_max += i[7]
 
-#funcoes
+
+#função linha
 def linha():
     print("_"*40)
 
+#função início
 def inicio():
-    print('Quiz sobre o Meio Ambiente')
     linha()
-    continuar = input("\nDeseja iniciar o Quiz? [S/N]: ")
+    print('\nQuiz sobre o Meio Ambiente')
     linha()
-    if continuar == 's' or continuar == "S":
+    print("\nEsse quiz consiste de 10 perguntas apresentadas em ordem aleatória.")
+    time.sleep(1)
+    print("\n-Duas(2) perguntas são fáceis e valem 1 pontos cada.")
+    time.sleep(1)
+    print("\n-Cinco(5) perguntas são médias e valem 2 pontos cada.")
+    time.sleep(1)
+    print("\n-Três(3) perguntas são difíceis e valem 3 pontos cada.")
+    time.sleep(1)
+    print("\nA pontuação máxima é %d pontos."%(pontuacao_max))
+    time.sleep(1)
+    print("\nPontuacão  /  Desempenho")
+    print("   ≤10    --> Regular")
+    print("   ≥11    --> Bom")
+    print("   ≥15    --> Ótimo")
+    print("   =21    --> Perfeito")
+    print("\nApós realizar o quiz, você terá a oportunidade de tentar novamente")
+    comecar = input("\nDeseja iniciar o Quiz? [S/N]: ")
+    linha()
+    if comecar == 's' or comecar == "S":
         status = True
     else:
+        print("Volte quando quiser começar")
         status = False
     return status
     
-
+#função info 
 def info(pont, numero): 
     if pont==1: 
         nivel = "Facil" 
@@ -165,7 +184,7 @@ def info(pont, numero):
         nivel="Dificil"
     print("\nPergunta: %d Nivel: %s" %(numero,nivel))
 
-
+#função questao
 def questao(pergunta, numero, acertos, erros):
     info(pergunta[7], numero)
     print("\n",pergunta[0],"\n", pergunta[1],"\n",pergunta[2],"\n", pergunta[3],"\n", pergunta[4],"\n", pergunta[5], "\n")
@@ -184,7 +203,9 @@ def questao(pergunta, numero, acertos, erros):
 
     return pontuacao, acertos, erros
 
+#funcao justificativa
 def justificativa(pergunta, resposta_usuario):
+    time.sleep(1)
     if resposta_usuario == "A":
         return pergunta[8]
     elif resposta_usuario == "B":
@@ -196,6 +217,7 @@ def justificativa(pergunta, resposta_usuario):
     elif resposta_usuario == "E":
         return pergunta[12]
 
+#funcao tentar_novamente
 def tentar_novamente():
     x = input("Você deseja tentar novamente?[S/N] ").upper()
     if x =="S": 
@@ -204,6 +226,7 @@ def tentar_novamente():
         continuar = False
     return continuar
 
+#funcao desempenho
 def desempenho(pontuacao_final):
     if pontuacao_final <= 10:
         print('Seu desempenho foi regular.')
@@ -220,10 +243,13 @@ continuar = inicio()
 
 #programa principal
 while continuar == True:
-    acertos =[] #essas variaveis tem que ficar aqui para serem zeradas caso o usuário queira tentar novamente. 
+    #variáveis que mudam com o loop
+    acertos =[] 
     erros=[]
     pontuacao_final = 0
+    #muda a ordem das perguntas
     random.shuffle(perguntas)
+    #faz cada perguntas
     for i in range(len(perguntas)): 
         pontos, acertos, erros = questao(perguntas[i], i+1, acertos, erros)
         pontuacao_final = pontuacao_final+pontos
@@ -231,14 +257,17 @@ while continuar == True:
         linha()
         time.sleep(1)
     
+    #dados no final do jogo
     print("Você acertou as questões:")
     print(*acertos, sep = ", ")
     time.sleep(1)
     print("Você errou as questões:")
     print(*erros, sep = ", ")
     time.sleep(1)
-    print("\nSua pontuação final foi: %d/%d" %(pontuacao_final,pontuacao_max))
+    puntuacao_de_dez =  (pontuacao_final*10)/21
+    print("\nSua pontuação final foi:\n%d/%d ou %d/10" %(pontuacao_final,pontuacao_max, puntuacao_de_dez))
     desempenho(pontuacao_final)
 
+    #pergunta se o usuário deseja tentar novamente
     linha()
     continuar = tentar_novamente()
