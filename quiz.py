@@ -80,7 +80,7 @@ pergunta_6 = ("Leia as afirmações a seguir e assinale a resposta errada:",
               "Com uma área total de mais de 6,7 milhões de metros quadrados, a floresta se estende pela Bolívia, Brasil, Colômbia, Equador, Guiana, Peru e Venezuela. Se fosse considerada um país, ela se encontraria no top 10 de maiores países do mundo.",
               "Podendo pesar até 250 quilos e chegando a quase 5 metros de comprimento, a Sucuri verde (Eunectes murinus) apresenta a maior proporção peso x comprimento do mundo.")
 
-pergunta_7 = ("Em 2 de agosto de 2010, foi promulgada a Lei n°12305 da PNRS (Política Nacional de Resíduos Sólidos, apresentando os processos que devem ser realizados no gerenciamento de resíduos sólidos. Assinale qual alternativa apresenta as opções e ordem corretas:", 
+pergunta_7 = ("Em 2 de agosto de 2010, foi promulgada a Lei n°12305 da PNRS (Política Nacional de Resíduos Sólidos), apresentando os processos que devem ser realizados no gerenciamento de resíduos sólidos. Assinale qual alternativa apresenta as opções e ordem corretas:", 
               "a) Reduzir, reusar e reciclar",
               "b) Não geração, Reciclagem, reutilização, filtração, tratamento dos resíduos e disposição final.", 
               "c) Não geração, redução, reutilização, reciclagem, tratamento dos resíduos e disposição final ambientalmente adequada.", 
@@ -190,17 +190,18 @@ def questao(pergunta, numero, acertos, erros):
     print("\n",pergunta[0],"\n", pergunta[1],"\n",pergunta[2],"\n", pergunta[3],"\n", pergunta[4],"\n", pergunta[5], "\n")
     linha()
     resposta_usuario = str(input("\nDigite a sua resposta: ")).upper() 
+    while (resposta_usuario != "A") and (resposta_usuario !="B") and (resposta_usuario !="C") and (resposta_usuario !="D") and (resposta_usuario !="E"):
+        print("As alternativas são A, B, C , D e E")
+        resposta_usuario = str(input("\nDigite a sua resposta novamente: ")).upper()
     if resposta_usuario == pergunta[6]: 
         print("Parabéns, você acertou")
-        print("Justificativa: ",justificativa(pergunta, resposta_usuario))
         pontuacao = pergunta[7] 
         acertos.append(numero)
     else:
         print("Você errou, a resposta correta era", pergunta[6])
-        print("Justificativa: ",justificativa(pergunta, resposta_usuario))
         pontuacao = 0
         erros.append(numero)
-
+    print("Justificativa: ",justificativa(pergunta, resposta_usuario))
     return pontuacao, acertos, erros
 
 #funcao justificativa
@@ -265,7 +266,7 @@ while continuar == True:
     print(*erros, sep = ", ")
     time.sleep(1)
     puntuacao_de_dez =  (pontuacao_final*10)/21
-    print("\nSua pontuação final foi:\n%d/%d ou %d/10" %(pontuacao_final,pontuacao_max, puntuacao_de_dez))
+    print("\nSua pontuação final foi:\n%d/%d ou %.2f/10" %(pontuacao_final,pontuacao_max, puntuacao_de_dez))
     desempenho(pontuacao_final)
 
     #pergunta se o usuário deseja tentar novamente
