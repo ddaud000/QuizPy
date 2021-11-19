@@ -191,7 +191,7 @@ def questao(pergunta, numero, acertos, erros):
     linha()
     resposta_usuario = str(input("\nDigite a sua resposta: ")).upper() 
     while (resposta_usuario != "A") and (resposta_usuario !="B") and (resposta_usuario !="C") and (resposta_usuario !="D") and (resposta_usuario !="E"):
-        print("As alternativas são A, B, C , D e E")
+        print("As alternativas são A, B, C, D e E")
         resposta_usuario = str(input("\nDigite a sua resposta novamente: ")).upper()
     if resposta_usuario == pergunta[6]: 
         print("Parabéns, você acertou")
@@ -220,6 +220,7 @@ def justificativa(pergunta, resposta_usuario):
 
 #funcao tentar_novamente
 def tentar_novamente():
+    linha()
     x = input("Você deseja tentar novamente?[S/N] ").upper()
     if x =="S": 
         continuar = True
@@ -270,5 +271,4 @@ while continuar == True:
     desempenho(pontuacao_final)
 
     #pergunta se o usuário deseja tentar novamente
-    linha()
     continuar = tentar_novamente()
